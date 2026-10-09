@@ -1,0 +1,81 @@
+﻿<Window x:Class="WpfWebViewBrowser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        Title="Учебный WebView2 Browser"
+        Width="1200"
+        Height="800"
+        MinWidth="700"
+        MinHeight="450"
+        Loaded="Window_Loaded">
+
+    <DockPanel>
+        <Border DockPanel.Dock="Top"
+                Background="#EEEEEE"
+                Padding="8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                        Content="←"
+                        ToolTip="Назад"
+                        Margin="2"
+                        Padding="12,6"
+                        Click="BackButton_Click"/>
+
+                <Button Grid.Column="1"
+                        Content="→"
+                        ToolTip="Вперёд"
+                        Margin="2"
+                        Padding="12,6"
+                        Click="ForwardButton_Click"/>
+
+                <TextBox x:Name="AddressBar"
+                         Grid.Column="2"
+                         Margin="5,2"
+                         Padding="6"
+                         VerticalContentAlignment="Center"
+                         KeyDown="AddressBar_KeyDown"/>
+
+                <Button Grid.Column="3"
+                        Content="Перейти"
+                        Margin="2"
+                        Padding="10,6"
+                        Click="NavigateButton_Click"/>
+
+                <ComboBox x:Name="DisplayModeComboBox"
+                          Grid.Column="4"
+                          Width="175"
+                          Margin="5,2"
+                          VerticalContentAlignment="Center"
+                          SelectionChanged="DisplayModeComboBox_SelectionChanged">
+                    <ComboBoxItem Content="Только текст"/>
+                    <ComboBoxItem Content="Текст + изображения"/>
+                    <ComboBoxItem Content="Текст + видео"/>
+                </ComboBox>
+
+                <Button Grid.Column="5"
+                        Content="Обновить"
+                        Margin="2"
+                        Padding="10,6"
+                        Click="RefreshButton_Click"/>
+
+                <Button Grid.Column="6"
+                        Content="Домой"
+                        Margin="2"
+                        Padding="10,6"
+                        Click="HomeButton_Click"/>
+            </Grid>
+        </Border>
+
+        <wv2:WebView2 x:Name="Browser"/>
+    </DockPanel>
+</Window>
